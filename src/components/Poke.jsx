@@ -6,18 +6,24 @@ const Poke = () => {
     const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon')
     const status = UseFetchUrl(url)
     const {loading, data} = status
-    loading? console.log('loading..'): console.log(data.results)
-
   return (
     <div>
-        <h1>CONSUMO DE POKEAPI</h1>
+        <h1 style={{textAlign:"center"}}>CONSUMO DE POKEAPI</h1>
 
         {
             loading
             ?
-            <h1>Loading..</h1>
+            <h1 style={{textAlign:"center", margin:"150px"}}>Loading..</h1>
             :
-            <Cards results={data.results}/>
+            <div>
+                <Cards results={data.results}/>
+                <div className='container m-auto'>
+                    <button className='m-2 btn btn-dark' onClick={()=>setUrl(data.previous)}>Anterior</button>
+                    <button className='btn btn-dark' onClick={()=>setUrl(data.next)}>Siguiente</button>
+                </div>
+            </div>
+
+
         }
     </div>
   )

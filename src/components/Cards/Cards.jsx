@@ -1,5 +1,6 @@
 import React from 'react'
 import { CardPoke } from './CardPoke'
+import './Cards.css'
 
 export const Cards = ({results}) => {
   return (
